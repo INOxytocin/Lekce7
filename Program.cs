@@ -4,28 +4,37 @@
     {
         static void Main(string[] args)
         {
-            Car MyCar = new Car("Toyota", "Corolla", 2005, 50000.0f);
+            //Car MyCar = new Car("Ford", "Mustang", 1995, 23156.0f);
 
-            Console.WriteLine("Drive() Method");
-            MyCar.Drive(123.35f);
-            Console.WriteLine(MyCar.WriteOutInfo("mileage"));
+            //Console.WriteLine("Drive() Method");
+            //MyCar.Drive(123.35f);
+            //Console.WriteLine(MyCar.WriteOutInfo("mileage"));
 
-            Console.WriteLine("\n");
-            Console.WriteLine("DisplayCarInfo() Method");
-            MyCar.DisplayCarInfo();
+            //Console.WriteLine("\n");
+            //Console.WriteLine("DisplayCarInfo() Method");
+            //MyCar.DisplayCarInfo();
 
-            Console.WriteLine("\n");
-            Console.WriteLine(MyCar);
-            Console.WriteLine("Press any key...");
-            Console.ReadKey();
+            //Console.WriteLine("\n");
+            //Console.WriteLine(MyCar);
+            //Console.WriteLine("Press any key...");
+            //Console.ReadKey();
+
+
+            //Book RandomBook = new Book("The Great Gatsby", "F. Scott Fitzgerald", 180);
+            //RandomBook.Read(50);
+            //RandomBook.DisplayProgress();
+            //Console.WriteLine("Press any key...");
+            //Console.ReadKey();
+
+
         }
     }
 
     public class Car
     {
-        private string Name { get; set; } //Pořád si nejsem jistý, kdy je dobrá praxe používat private-public,
-        private string Model { get; set; } //ale říkal jsem si, že kdybych měl někde v databázi uvedené auté, 
-        private int Year { get; set; } //tak bych ho nechtěl jen tak změnit. Zvlášť mileage kvůli scamům.
+        private string Name { get; } //Pořád si nejsem jistý, kdy je dobrá praxe používat private-public,
+        private string Model { get; } //ale říkal jsem si, že kdybych měl někde v databázi uvedené auté, 
+        private int Year { get; } //tak bych ho nechtěl jen tak změnit. Zvlášť mileage kvůli scamům.
         private float Mileage { get; set; }
 
         public Car(string name, string model, int year, float mileage)
@@ -81,5 +90,40 @@
         }
 
 
+    }
+    public class Book
+    {
+        private string Title { get; }
+        private string Author { get; }
+        private int Pages { get; }
+        private int CurrentPage { get; set; }
+
+        public Book(string title, string author, int pages)
+        {
+            Title = title;
+            Author = author;
+            Pages = pages;
+            CurrentPage = 0;
+
+        }
+
+        public void Read(int readPages)
+        {
+            if ((CurrentPage + readPages) > Pages)
+            {
+                throw new ArgumentOutOfRangeException("You've already read " + CurrentPage + " out of " + Pages + " pages. Reading another " + readPages + " is INPOSSIBLE");
+            }
+            else if (readPages < 0 )
+            {
+                throw new ArgumentOutOfRangeException("Reading backwards??");
+            }
+            CurrentPage += readPages;
+        }
+
+        public void DisplayProgress()
+        {
+            Console.WriteLine("Reading '" + this.Title + "' by " + this.Author + ": " + this.CurrentPage + "/" + this.Pages + " pages read." );
+
+        }
     }
 }
