@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            //Car MyCar = new Car("Ford", "Mustang", 1995, 200.0f);
+            //Car MyCar = new Car("Ford", "Mustang", 1995, 23156.0f);
 
             //Console.WriteLine("Drive() Method");
             //MyCar.Drive(123.35f);
@@ -20,14 +20,11 @@
             //Console.ReadKey();
 
 
-            Book RandomBook = new Book("The Great Gatsby", "F. Scott Fitzgerald", 180);
-            RandomBook.Read(50);
-            RandomBook.Read(50);
-            RandomBook.Read(50);
-            RandomBook.Read(-50);
-            RandomBook.DisplayProgress();
-            Console.WriteLine("Press any key...");
-            Console.ReadKey();
+            //Book RandomBook = new Book("The Great Gatsby", "F. Scott Fitzgerald", 180);
+            //RandomBook.Read(50);
+            //RandomBook.DisplayProgress();
+            //Console.WriteLine("Press any key...");
+            //Console.ReadKey();
 
 
         }
@@ -114,7 +111,7 @@
         {
             if ((CurrentPage + readPages) > Pages)
             {
-                throw new ArgumentOutOfRangeException("You've already read " + Pages + " out of " + Pages + " pages. Reading another " + readPages + " is INPOSSIBLE");
+                throw new ArgumentOutOfRangeException("You've already read " + CurrentPage + " out of " + Pages + " pages. Reading another " + readPages + " is INPOSSIBLE");
             }
             else if (readPages < 0 )
             {
